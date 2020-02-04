@@ -6,9 +6,10 @@ import { useQuery } from "@apollo/react-hooks";
 const GET_MOVIES = gql`
   query getMovie($id: Int!) {
     movie(id: $id) {
-      id
       title
       medium_cover_image
+      language
+      rating
       description_intro
     }
   }
@@ -19,10 +20,18 @@ export default () => {
   const { loading, data } = useQuery(GET_MOVIES, {
     variables: { id },
   });
-  if (loading) {
-    return "loading..."
-  }
-  if (data && data.movie) {
-    return data.movie.title;
-  }
+  return (
+    <div>
+      {data && data.movie && (
+        <div>
+          <img src={data.movie.medium_cover_image} alt="" />
+          <h1>{data.movie.title}</h1>
+          <p>
+            {data.movie.language} / {data.movie.rating}
+          </p>
+          <p>{data.movie.description_intro}</p>
+        </div>
+      )}
+    </div>
+  );
 };

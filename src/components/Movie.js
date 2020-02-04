@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 
-export default ({id})=> <MovieEl>
+export default ({id, medium_cover_image})=> <MovieEl>
   <Link to={`/${id}`}>
-  {id}
+    <img src={medium_cover_image} alt=""/>
   </Link>
 </MovieEl>;
 

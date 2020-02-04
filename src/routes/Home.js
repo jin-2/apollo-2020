@@ -19,7 +19,7 @@ export default () => {
       {loading && <p>loading...</p>}
       {!loading &&
         data.movies &&
-        data.movies.map((movie) => <Movie key={movie.id} id={movie.id} />)}
+        data.movies.map((movie) => <Movie key={movie.id} {...movie} />)}
     </div>
   );
 };
